@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="5; url={% url 'Shop_App:home' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Your Payment Status</title>
+</head>
+<body>
+  <div class="container shadow-none p-3 mb-5 bg-light rounded">
+    <h2 class="text-muted">Your Payment Info : </h2>
+    <hr>
+    <div class="messages container mt-2">
+      {% if messages %}
+      {% for message in messages %}
+      <div {% if message.tags %} class="alert alert-{{message.tags}}{% endif %}" role="alert">
+        {{message}}
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

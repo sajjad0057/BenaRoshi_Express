@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %}
+  BenarosHi | Add-Product
+{% endblock title_block %}
+
+{% block body_block %}
+<div class="class=shadow-none p-3 mb-5 bg-light rounded">
+    <h1 class="text-muted">Insert Product Details :</h1>
+    <hr>
+    <form method="POST" enctype="multipart/form-data">
+        {{form|crispy}}
+        {% csrf_token %}
+        <br>
+      <button type="submit" class="btn btn-info ">Add Product</button>
+    </form>
+    <div class="class=shadow-none p-3 mb-5 bg-light rounded">
+      <button class="btn btn-info" style="float: right;" >
+        <a href="{% url 'Shop_App:category' %}" style="text-decoration: none; color: whitesmoke;">Back To Category</a>
+      </button>
+    </div>
+
+</div>
+
+
+
+
+  
+{% endblock body_block %}

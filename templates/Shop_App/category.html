@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %}
+  BenarosHi | Category
+{% endblock title_block %}
+
+{% block body_block %}
+
+
+    {% if flag %}
+    <div class="shadow-none p-3 mb-5 bg-light rounded">
+        <h2 class="text-muted">Add New Category</h2>
+        <hr>
+        <form method="POST">
+            {{form|crispy}}
+            {% csrf_token %}
+            <button class="btn btn-info" type="submit"> Add </button>
+        </form>
+    </div>
+
+    {% else %}
+    <div class="shadow-none p-3 mb-5 bg-light rounded">
+        <h1 class="text-muted">Select Category To Add Product :</h1>
+        <hr>
+        {% for category in object_list %}
+    
+        <h3 class="text-muted">
+            # <a href="{% url 'Shop_App:add_product' category.pk %}"  style="margin-left: none; color: rgb(56, 56, 56);">{{category.title}}</a>
+        </h3>
+        <hr>
+        
+        {% endfor %}
+        <a href="{% url 'Shop_App:add_category' %}" class="btn btn-info"> Add New Category </a>
+        <br><br>
+      
+    {% endif %}
+
+
+</div>
+{% endblock body_block %}

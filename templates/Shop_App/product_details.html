@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title_block %}
+  BenarosHi | Products-Details
+{% endblock title_block %}
+
+{% block body_block %}
+<div class="shadow-none p-3 mb-5 bg-light rounded my-5" style="border: 1px solid rgb(221, 218, 218);">
+
+    <div class="row" >
+      <aside class="col-sm-5">
+        <article class="gallery-wrap">
+          <div >
+            <div>
+              <a href="#"><img src="/media/{{object.product_image}}" width="100%"  ></a>
+            </div>
+          </div>
+        </article>
+      </aside>
+      <aside class="col-sm-7" style="border-left: 3px solid rgb(204, 201, 201);">
+        <article class="card-body p-5">
+          <h3 class="title mp-3">{{object.name}}</h3>
+          <p class="price-detail-wrap">
+            <span class="price h3 text-warning">
+              <span class="currency">BDT &#2547;</span><span class="num">{{object.price}}</span>
+            </span>
+            <br>
+            <strong style="color: rgb(117, 116, 116);"><i>{{object.preview_text}}</i></strong>
+          </p>
+          <dl class="item-property">
+            <dt>Description</dt>
+            <dd>
+              <p>{{object.detail_text|linebreaks}}</p>
+            </dd>
+          </dl>
+          <a href="{% url 'Order_App:add' pk=object.pk %}" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to Cart</a>
+        </article>
+      </aside>
+    </div>
+
+</div>
+  
+{% endblock body_block %}
